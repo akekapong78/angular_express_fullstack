@@ -4,37 +4,29 @@ GET http://localhost:3000/
 ###
 GET http://localhost:3000/api/
 
-###
-GET http://localhost:3000/api/products/
 
 ###
-GET http://localhost:3000/api/products/1
+GET http://localhost:3000/api/read-book/1
 
 ###
-GET http://localhost:3000/api/categorys/
-
-###
-POST http://localhost:3000/api/products
+POST http://localhost:3000/api/add-book
 Content-Type: application/json
 
 {
   "name": "toshiba",
   "price": 22323,
-  "categoryId": 1
+  "description": "best of the best"
 }
 
 ###
-PATCH  http://localhost:3000/api/products/1
+PATCH  http://localhost:3000/api/update-book/2
 Content-Type: application/json
 
 {
   "name": "Zenbook 13 pro",
   "price": 2599,
-  "categoryId": 1
+  "description": "best of the best 2009"
 }
 
 ###
-DELETE http://localhost:3000/api/products/2
-
-###
-DELETE http://localhost:3000/api/categorys/3
+DELETE http://localhost:3000/api/delete-book/1
