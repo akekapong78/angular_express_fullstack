@@ -13,7 +13,7 @@ datasource db {
 model Book {
   id          Int       @id @default(autoincrement())
   name        String    @unique
-  price       Int       @default(999)
-  description String    
+  price       String
+  description String
 }
 

@@ -41,7 +41,7 @@ router.get('/read-book/:id', async (req, res, next) => {
 });
  
 // Update book
-router.patch('/update-book/:id', async (req, res, next) => {
+router.put('/update-book/:id', async (req, res, next) => {
   try {
     const { id } = req.params
     const book = await prisma.book.update({

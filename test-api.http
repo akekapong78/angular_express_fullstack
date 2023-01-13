@@ -6,25 +6,25 @@ GET http://localhost:3000/api/
 
 
 ###
-GET http://localhost:3000/api/read-book/1
+GET http://localhost:3000/api/read-book/3
 
 ###
 POST http://localhost:3000/api/add-book
 Content-Type: application/json
 
 {
-  "name": "toshiba",
-  "price": 22323,
+  "name": "tossddfffhiba",
+  "price": "22323",
   "description": "best of the best"
 }
 
 ###
-PATCH  http://localhost:3000/api/update-book/2
+PUT  http://localhost:3000/api/update-book/7
 Content-Type: application/json
 
 {
   "name": "Zenbook 13 pro",
-  "price": 2599,
+  "price": "2599",
   "description": "best of the best 2009"
 }
 
