@@ -19,8 +19,8 @@ services:
 
   backend:
     build:
-      context: backend
-      dockerfile: Dockerfile
+      context: backend  # floder backend
+      dockerfile: Dockerfile  # build Dockerfile
     container_name: backend
     restart: always
     command: sh -c "npx prisma migrate deploy && npm run start"
@@ -28,22 +28,40 @@ services:
       - 3000:3000
     depends_on:
       - db
+    links:
+        - db
     networks:
       - dev_network
 
-  phpmyadmin:
-    image: phpmyadmin
-    container_name: phpmyadmin
-    restart: always
-    ports:
-      - 8088:80
-    depends_on:
-      - db
-    environment:
-      PMA_HOST : db
-      MYSQL_ROOT_PASSWORD: 1234  # id root
-    networks:
-      - dev_network
+  frontend:
+      build:
+        context: frontend  # floder frontend
+        dockerfile: Dockerfile  # build Dockerfile
+      container_name: frontend
+      restart: always
+      ports:
+        - 8080:80
+      command: ["nginx", "-g", "daemon off;"]
+      depends_on:
+        - backend
+      links:
+        - backend
+      networks:
+        - dev_network
+
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   container_name: phpmyadmin
+  #   restart: always
+  #   ports:
+  #     - 8088:80
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     PMA_HOST : db
+  #     MYSQL_ROOT_PASSWORD: 1234  # id root
+  #   networks:
+  #     - dev_network
 
 networks:
   dev_network:

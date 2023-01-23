@@ -1,5 +1,5 @@
-# For test run Backend
-# npm start   << for run app api
+# For test run Backend !!!!
+# then >>  npm start   << for run app api
 
 version: '3.8'
 services:
@@ -18,19 +18,19 @@ services:
     networks:
       - dev_network
 
-  # backend:
-  #   build:
-  #     context: backend
-  #     dockerfile: Dockerfile
-  #   container_name: backend
-  #   restart: always
-  #   command: sh -c "npx prisma migrate deploy && npm run start"
-  #   ports:
-  #     - 3000:3000
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - dev_network
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    command: sh -c "npx prisma migrate deploy && npm run start"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+    networks:
+      - dev_network
 
   phpmyadmin:
     image: phpmyadmin
@@ -48,6 +48,7 @@ services:
 
 networks:
   dev_network:
-
+    driver: bridge
+    
 volumes:
   db_data:
